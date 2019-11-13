@@ -1,4 +1,9 @@
-﻿  main.cpp
+﻿  aimTrainerGame.cpp
+C:\Users\andre\Documents\CS202\202Project\src\aimTrainerGame.cpp(63,54): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\andre\Documents\CS202\202Project\src\aimTrainerGame.cpp(63,36): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\andre\Documents\CS202\202Project\src\aimTrainerGame.cpp(80,55): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\andre\Documents\CS202\202Project\src\aimTrainerGame.cpp(80,37): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\andre\Documents\CS202\202Project\src\aimTrainerGame.cpp(81,25): warning C4244:  'initializing': conversion from 'sf::Int32' to 'float', possible loss of data
   202Project.vcxproj -> C:\Users\andre\Documents\CS202\202Project\Debug\202Project.exe
   C:\Users\andre\Documents\CS202\202Project\deps\openal32.dll
   C:\Users\andre\Documents\CS202\202Project\deps\sfml-audio-2.dll
