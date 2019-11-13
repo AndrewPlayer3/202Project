@@ -1,6 +1,8 @@
 #ifndef _GAME_HPP_
 #define _GAME_HPP_
 
+#include <iostream>
+
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
@@ -13,5 +15,6 @@ public:
 	Game();
 	~Game();
 };
+
 
 #endif
