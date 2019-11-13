@@ -18,6 +18,53 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\aimTrainerGame.cpp" />
+    <ClCompile Include="src\foodGame.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\pongGame.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\game.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="resrcs\consola.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="deps\openal32.dll">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="deps\sfml-audio-2.dll">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="deps\sfml-audio-d-2.dll">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="deps\sfml-graphics-2.dll">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="deps\sfml-graphics-d-2.dll">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="deps\sfml-network-2.dll">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="deps\sfml-network-d-2.dll">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="deps\sfml-system-2.dll">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="deps\sfml-system-d-2.dll">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="deps\sfml-window-2.dll">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="deps\sfml-window-d-2.dll">
+      <FileType>Document</FileType>
+    </None>
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{08F57053-2285-4E2F-A631-55467C3F9FD7}</ProjectGuid>
@@ -83,6 +130,9 @@
       <AdditionalLibraryDirectories>C:\SFML-2.5.1\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-network-d.lib;sfml-audio-d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>copy "$(SolutionDir)deps\*"  "$(TargetDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -125,18 +175,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="aimTrainerGame.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="foodGame.cpp" />
-    <ClCompile Include="pongGame.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="game.hpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Font Include="consola.ttf" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

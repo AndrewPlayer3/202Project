@@ -29,7 +29,7 @@ int aimTrainerGame() {
 	window.setVerticalSyncEnabled(true);
 
 	sf::Font font;
-	font.loadFromFile("consola.ttf");
+	font.loadFromFile("resrcs/consola.ttf");
 
 	sf::Text last;
 	sf::Text avg;

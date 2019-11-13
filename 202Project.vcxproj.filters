@@ -15,25 +15,62 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="src\aimTrainerGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="foodGame.cpp">
+    <ClCompile Include="src\foodGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="pongGame.cpp">
+    <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="aimTrainerGame.cpp">
+    <ClCompile Include="src\pongGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="game.hpp">
+    <ClInclude Include="src\game.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Font Include="consola.ttf" />
+    <Font Include="resrcs\consola.ttf">
+      <Filter>Resource Files</Filter>
+    </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="deps\openal32.dll">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="deps\sfml-audio-2.dll">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="deps\sfml-audio-d-2.dll">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="deps\sfml-graphics-2.dll">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="deps\sfml-graphics-d-2.dll">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="deps\sfml-network-2.dll">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="deps\sfml-network-d-2.dll">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="deps\sfml-system-2.dll">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="deps\sfml-system-d-2.dll">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="deps\sfml-window-2.dll">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="deps\sfml-window-d-2.dll">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
