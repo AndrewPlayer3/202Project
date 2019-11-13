@@ -4,6 +4,6 @@
 
 int main()
 {
-	aimTrainerGame();
+	foodGame();
 	return 0;
 }
