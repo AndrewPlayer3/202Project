@@ -29,3 +29,8 @@
 *.exe
 *.out
 *.app
+
+# VS Folder
+*.vs
+.DS_Store
+
