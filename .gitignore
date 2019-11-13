@@ -30,7 +30,12 @@
 *.out
 *.app
 
-# VS Folder
+# VS Stuff Folder
 *.vs
 .DS_Store
-Debug/*
+Debug/
+*.ilk
+*.log
+*.idb
+*.pdb
+*.tlog
