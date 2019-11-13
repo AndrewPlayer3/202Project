@@ -105,10 +105,10 @@ int aimTrainerGame() {
 			avg.setPosition(best.getPosition().x + (wW / 4), 0);
 
 			window.clear(sf::Color::Red);
+			window.draw(target);
 			window.draw(last);
 			window.draw(best);
 			window.draw(avg);
-			window.draw(target);
 			window.display();
 
 		}
