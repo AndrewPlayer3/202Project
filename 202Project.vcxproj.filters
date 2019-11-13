@@ -18,10 +18,13 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="game.cpp">
+    <ClCompile Include="foodGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="entity.cpp">
+    <ClCompile Include="pongGame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="aimTrainerGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -29,8 +32,8 @@
     <ClInclude Include="game.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="entity.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="consola.ttf" />
   </ItemGroup>
 </Project>

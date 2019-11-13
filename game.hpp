@@ -5,13 +5,8 @@
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
 
-class Game
-{
-private:
-
-public:
-	Game();
-	~Game();
-};
+int foodGame();
+int pongGame();
+int aimTrainerGame();
 
 #endif
