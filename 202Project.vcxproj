@@ -19,13 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\aimTrainerGame.cpp" />
-    <ClCompile Include="src\foodGame.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\pongGame.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\game.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="resrcs\consola.ttf" />

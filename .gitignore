@@ -33,4 +33,4 @@
 # VS Folder
 *.vs
 .DS_Store
-
+Debug/*
