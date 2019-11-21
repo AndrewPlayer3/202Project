@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Token.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="resrcs\consola.ttf" />

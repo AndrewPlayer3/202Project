@@ -3,7 +3,12 @@
 
 class Token {
 
+public:
+	Token();
+	auto getColor();
 
+private:
+	int _player;
 
 };
 
