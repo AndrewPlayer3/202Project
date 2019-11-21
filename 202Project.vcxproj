@@ -59,6 +59,9 @@
       <FileType>Document</FileType>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Token.hpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{08F57053-2285-4E2F-A631-55467C3F9FD7}</ProjectGuid>
