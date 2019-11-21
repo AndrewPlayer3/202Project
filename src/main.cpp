@@ -7,7 +7,7 @@
 
 int main()
 {
-	std::vector<std::vector<int> > board{{ 0, 0, 0, 0, 0, 0, 0 },
+	std::vector<std::vector<int>> board{{ 0, 0, 0, 0, 0, 0, 0 },
 										 { 0, 0, 0, 0, 0, 0, 0 },
 										 { 0, 0, 0, 0, 0, 1, 0 },
 										 { 0, 0, 0, 0, 0, 0, 0 },
@@ -18,7 +18,7 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(1100,900 ), "Connect4!");
 	sf::CircleShape shape(50.f);
 	shape.setFillColor(sf::Color::White);
-
+	Token t;
 	while (window.isOpen())
 	{
 		sf::Event event;
