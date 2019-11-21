@@ -1,4 +1,3 @@
-/* Test File: Make sure you can run this. */
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
@@ -6,7 +5,7 @@ int main()
 {
 	sf::RenderWindow window(sf::VideoMode(1100,900 ), "Connect4!");
 	sf::CircleShape shape(50.f);
-	shape.setFillColor(sf::Color::Cyan);
+	shape.setFillColor(sf::Color::White);
 
 	while (window.isOpen())
 	{
@@ -18,7 +17,7 @@ int main()
 		}
 
 
-		window.clear(sf::Color::Blue);
+		window.clear(sf::Color::Cyan);
 		for (int row = 0; row < 7; ++row) {
 			for (int column = 0; column < 6; ++column) {
 				shape.setPosition(100+row * 130.f, 100+column * 130.f);
