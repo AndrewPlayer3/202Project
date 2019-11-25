@@ -1,5 +1,5 @@
 /* Test File: Make sure you can run this. */
-#include "game.hpp"
+#include "board.hpp"
 
 int main()
 {
