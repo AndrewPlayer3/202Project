@@ -11,6 +11,12 @@ int connectFourGame() {
 	Board board(&window);
 	board.initBoard();
 
+	sf::Font font;
+	font.loadFromFile("resrcs/consola.ttf");
+
+	sf::Text currentPlayerStatus;
+	currentPlayerStatus.setCharacterSize(30.f);
+
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -33,7 +39,7 @@ int connectFourGame() {
 					&& !board.isColumnFull(6)) {
 					col = 6;
 				}
-				else if( i < 6 && mPos < board.places[0][i+1].getPosition().x
+				else if (i < 6 && mPos < board.places[0][i + 1].getPosition().x
 					&& mPos > board.places[0][i].getPosition().x
 					&& !board.isColumnFull(i)) {
 					col = i;
@@ -44,13 +50,24 @@ int connectFourGame() {
 				continue;
 			}
 			int row = board.getLowestPlace(col);
-			if(board.currentPlayer) board.setColor(row, col, sf::Color::Red);
-			else board.setColor(row, col, sf::Color::Blue);
+			if (board.currentPlayer) {
+				board.setColor(row, col, sf::Color::Red);
+				currentPlayerStatus = { std::string("Player: 1"), font, 50 };
+			}
+			else {
+				board.setColor(row, col, sf::Color::Blue);
+				currentPlayerStatus = { std::string("Player: 2"), font, 50 };
+			}
 			event.type = sf::Event::KeyPressed;
 			board.currentPlayer = !board.currentPlayer;
 		}
 
+		currentPlayerStatus.setOutlineThickness(2.f);
+		currentPlayerStatus.setOutlineColor(sf::Color::Black);
+		currentPlayerStatus.setPosition(100.f, 10);
+
 		window.clear(sf::Color::Cyan);
+		window.draw(currentPlayerStatus);
 		board.drawBoard();
 		window.display();
 	}
