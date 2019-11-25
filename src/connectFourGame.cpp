@@ -5,17 +5,17 @@ int getColumnFromPos(float mPos, Board& board) {
 	int col = -1;
 	for (int i = 0; i < 7; i++) {
 		if (i == 0
-			&& mPos < board.places[0][1].getPosition().x
+			&& mPos < board.getPlacePosition(0, 1).x
 			&& !board.isColumnFull(0)) {
 			col = 0;
 		}
 		else if (i == 6
-			&& mPos > board.places[0][6].getPosition().x
+			&& mPos > board.getPlacePosition(0, 6).x
 			&& !board.isColumnFull(6)) {
 			col = 6;
 		}
-		else if (i < 6 && mPos < board.places[0][i + 1].getPosition().x
-			&& mPos > board.places[0][i].getPosition().x
+		else if (i < 6 && mPos < board.getPlacePosition(0, i+1).x
+			&& mPos > board.getPlacePosition(0, i).x
 			&& !board.isColumnFull(i)) {
 			col = i;
 		}
