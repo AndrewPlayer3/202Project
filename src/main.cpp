@@ -4,6 +4,6 @@
 
 int main()
 {
-	foodGame();
+	connectFourGame();
 	return 0;
 }

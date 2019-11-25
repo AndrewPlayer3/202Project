@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="connectFourGame.cpp" />
     <ClCompile Include="src\aimTrainerGame.cpp" />
     <ClCompile Include="src\foodGame.cpp" />
     <ClCompile Include="src\main.cpp" />
