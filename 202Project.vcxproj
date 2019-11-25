@@ -20,7 +20,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\Token.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="resrcs\consola.ttf" />
@@ -61,7 +60,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Token.hpp" />
+    <ClInclude Include="src\Board.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

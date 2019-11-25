@@ -1,24 +1,27 @@
+#include "Board.hpp"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <vector>
-#include "Token.hpp"
 
 
 
-int main()
-{
-	std::vector<std::vector<int>> board{{ 0, 0, 0, 0, 0, 0, 0 },
-										 { 0, 0, 0, 0, 0, 0, 0 },
-										 { 0, 0, 0, 0, 0, 1, 0 },
-										 { 0, 0, 0, 0, 0, 0, 0 },
-										 { 0, 0, 0, 0, 0, 0, 0 },
-										 { 0, 0, 1, 0, 1, 0, 0 }};
+
+int main(){
+	
+	std::vector<std::vector<int>> board{ { 0, 0, 0, 0, 0, 0, 0 },
+									{ 0, 0, 0, 0, 0, 0, 0 },
+									{ 0, 0, 0, 0, 0, 0, 0 },
+									{ 0, 0, 0, 0, 0, 0, 0 },
+									{ 0, 0, 0, 0, 0, 0, 0 },
+									{ 0, 0, 0, 0, 0, 0, 0 }
+	};
 
 
 	sf::RenderWindow window(sf::VideoMode(1100,900 ), "Connect4!");
 	sf::CircleShape shape(50.f);
 	shape.setFillColor(sf::Color::White);
-	Token t;
+
+
 	while (window.isOpen())
 	{
 		sf::Event event;
