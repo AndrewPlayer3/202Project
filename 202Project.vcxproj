@@ -19,13 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="connectFourGame.cpp" />
-    <ClCompile Include="src\aimTrainerGame.cpp" />
-    <ClCompile Include="src\foodGame.cpp" />
-    <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\pongGame.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <Font Include="resrcs\consola.ttf" />
   </ItemGroup>
   <ItemGroup>
@@ -64,7 +57,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\game.hpp" />
+    <ClCompile Include="src\board.cpp" />
+    <ClCompile Include="src\connectFourGame.cpp" />
+    <ClCompile Include="src\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\board.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
