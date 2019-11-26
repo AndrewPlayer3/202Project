@@ -1,29 +1,36 @@
-#ifndef BOARD_HPP
-#define BOARD_HPP
-#include <vector>
+#ifndef _BOARD_HPP_
+#define _BOARD_HPP_
+
+#include <SFML/Window.hpp>
+#include <SFML/System.hpp>
+#include <SFML/Graphics.hpp>
+#include <iostream>
 
 class Board {
 
 public:
 
-	//Vector that holds the board pieces
-	std::vector<std::vector<int>> board{ { 0, 0, 0, 0, 0, 0, 0 },
-										 { 0, 0, 0, 0, 0, 0, 0 },
-										 { 0, 0, 0, 0, 0, 0, 0 },
-										 { 0, 0, 0, 0, 0, 0, 0 },
-										 { 0, 0, 0, 0, 0, 0, 0 },
-									   	 { 0, 0, 0, 0, 0, 0, 0 }
-	};
+	sf::RenderWindow* window;
+	bool currentPlayer;
 
+	Board(sf::RenderWindow* window)
+		: window(window), _places(), currentPlayer(true) {}
 
-	//Draw function
+	void initBoard();
+	int getLowestPlace(int column);
+	bool isOccupied(sf::Color playerColor, int row, int column);
+	bool checkForWinner();
+	sf::Vector2f getPlacePosition(int row, int column);
+	bool isColumnFull(int column);
+	void setColor(int row, int column, sf::Color color);
+	void drawBoard();
 
-	//Checks Winner  function
+private:
+	std::vector<std::vector<sf::CircleShape>> _places;
+	int _rows = 6;
+	int _cols = 7;
+};
 
-	//Check 4 in a row function (Vertically, horizontally, diagonally)
-
-	//Check if column is maxxed out (7)
-
-}
+int connectFourGame();
 
 #endif
