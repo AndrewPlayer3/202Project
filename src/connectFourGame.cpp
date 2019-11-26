@@ -94,9 +94,6 @@ int connectFourGame() {
 		currentPlayerStatus.setOutlineColor(sf::Color::Black);
 		currentPlayerStatus.setPosition(100.f, 10);
 
-		std::cout << board.filledPlaces << ", "
-			<< board.getNumberOfRows() * board.getNumberOfColumns() << std::endl;
-
 		window.clear(sf::Color::Green);
 		window.draw(currentPlayerStatus);
 		if (hasWon) {

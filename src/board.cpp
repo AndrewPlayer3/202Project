@@ -36,60 +36,40 @@ sf::Vector2f Board::getPlacePosition(int row, int column) {
 }
 
 bool Board::checkForWinner(int row, int col) {
+	if (row >= _rows || col >= _cols) return false;
 	sf::Color playerColor = _places[row][col].getFillColor();
+	if (playerColor != playerOneColor && playerColor != playerTwoColor) return false;
 	int count = 0;
 	// Rows
-	for (int row = 0; row < _rows; row++) {
-		for (int col = 0; col < _cols; col++) {
-			if (_places[row][col].getFillColor() == playerColor)
-				count++;
-			else count = 0;
-			if (count == 4) return true;
-		}
-		count = 0;
+	for (int i = 0; i < _cols; i++) {
+		if (_places[row][i].getFillColor() == playerColor) count++;
+		else count = 0;
+		if (count == 4) return true;
 	}
+	count = 0;
 	// Columns
-	for (int col = 0; col < _cols; col++) {
-		for (int row = 0; row < _rows; row++) {
-			if (_places[row][col].getFillColor() == playerColor)
-				count++;
-			else count = 0;
-			if (count == 4) return true;
-		}
-		count = 0;
+	for (int i = 0; i < _rows; i++) {
+		if (_places[i][col].getFillColor() == playerColor) count++;
+		else count = 0;
+		if (count == 4) return true;
 	}
+	count = 0;
 	// Right Diagonals
-	for (int row = 3; row < _rows; row++) {
-		for (int col = 0; col < _cols - 3; col++) {
-			int currentCol = col;
-			bool breakIf = false;
-			for (int currentRow = row; currentRow >= 0 && !breakIf; currentRow--) {
-				if (_places[currentRow][currentCol].getFillColor() == playerColor)
-					count++;
-				else count = 0;
-				if (count == 4) return true;
-				if (currentCol == _cols - 1) breakIf = true;
-				else currentCol++;
-			}
-			count = 0;
-		}
-	}
+	for (int i = row, j = col; i > 0 && j < _cols - 1
+		&& _places[i][j].getFillColor() == playerColor; i--, j++, count++);
+	for (int i = row, j = col; i < _rows - 1 && j > 0
+		&& _places[i][j].getFillColor() == playerColor; i++, j--, count++);
+	if (count == 4) return true;
+	else count = 0;
+
 	// Left Diagonals
-	for (int row = 3; row < _rows; row++) {
-		for (int col = _cols - 1; col > 2; col--) {
-			int currentCol = col;
-			bool breakIf = false;
-			for (int currentRow = row; currentRow >= 0 && !breakIf; currentRow--) {
-				if (_places[currentRow][currentCol].getFillColor() == playerColor)
-					count++;
-				else count = 0;
-				if (count == 4) return true;
-				if (currentCol == 0) breakIf = true;
-				else currentCol--;
-			}
-			count = 0;
-		}
-	}
+	for (int i = row, j = col; i >= 0 && j >= 0
+		&& _places[i][j].getFillColor() == playerColor; i--, j--, count++);
+	for (int i = row, j = col; i < _rows && j < _cols 
+		&& _places[i][j].getFillColor() == playerColor; i++, j++, count++);
+	if (count == 4) return true;
+	else count = 0;
+
 	return false;
 }
 
