@@ -1,28 +1,6 @@
 #include "board.hpp"
 #include <iostream>
 
-int getColumnFromPos(float mPos, Board& board) {
-	int col = -1;
-	for (int i = 0; i < 7; i++) {
-		if (i == 0
-			&& mPos < board.getPlacePosition(0, 1).x
-			&& !board.isColumnFull(0)) {
-			col = 0;
-		}
-		else if (i == 6
-			&& mPos > board.getPlacePosition(0, 6).x
-			&& !board.isColumnFull(6)) {
-			col = 6;
-		}
-		else if (i < 6 && mPos < board.getPlacePosition(0, i+1).x
-			&& mPos > board.getPlacePosition(0, i).x
-			&& !board.isColumnFull(i)) {
-			col = i;
-		}
-	}
-	return col;
-}
-
 int connectFourGame() {
 
 	int windowHeight = 900;
@@ -39,40 +17,91 @@ int connectFourGame() {
 	sf::Text currentPlayerStatus;
 	currentPlayerStatus.setCharacterSize(30.f);
 
+	sf::Text winnerMessage;
+	winnerMessage.setCharacterSize(30.f);
+
+	sf::Text drawMessage;
+	drawMessage.setCharacterSize(30.f);
+
+	bool hasWon = false;
+	bool isDraw = false;
+
 	while (window.isOpen())
 	{
+
+		if (hasWon || isDraw) {
+			if (board.currentPlayer) {
+				winnerMessage = { std::string("Player 2 Wins!"), font, 50 };
+			}
+			else {
+				winnerMessage = { std::string("Player 1 Wins!"), font, 50 };
+			}
+			winnerMessage.setPosition(400.f, 10.f);
+			winnerMessage.setOutlineThickness(2.f);
+			winnerMessage.setOutlineColor(sf::Color::Black);
+			drawMessage = { std::string("Draw!"), font, 50 };
+			drawMessage.setPosition(500.f, 10.f);
+			drawMessage.setOutlineThickness(2.f);
+			drawMessage.setOutlineColor(sf::Color::Black);
+		}
+
 		sf::Event event;
 		while (window.pollEvent(event))
 		{
-			if (event.type == sf::Event::Closed)
+			if (event.type == sf::Event::Closed
+				|| event.type == sf::Event::KeyReleased
+				&& event.key.code == sf::Keyboard::Escape)
 				window.close();
+
+			if ((hasWon || isDraw)
+				&& event.type == sf::Event::KeyReleased
+				&& event.key.code == sf::Keyboard::Space) {
+				board.initBoard();
+				hasWon = false;
+				isDraw = false;
+				board.filledPlaces = 0;
+			}
 		}
-		if (event.type == sf::Event::MouseButtonReleased && event.key.code == sf::Mouse::Left) {
-			float mPos = sf::Mouse::getPosition(window).x;
-			int col = getColumnFromPos(mPos, board);
-			if (col == -1) {
+		if (!hasWon) {
+			if (event.type == sf::Event::MouseButtonReleased && event.key.code == sf::Mouse::Left) {
+				float mPos = sf::Mouse::getPosition(window).x;
+				int col = board.getColumnFromPos(mPos);
+				if (col == -1) {
+					event.type = sf::Event::KeyPressed;
+					continue;
+				}
+				int row = board.getLowestPlace(col);
+				if (board.currentPlayer) {
+					board.setColor(row, col, board.playerOneColor);
+					hasWon = board.checkForWinner(board.playerOneColor);
+					currentPlayerStatus = { std::string("Player: 2"), font, 50 };
+				}
+				else {
+					board.setColor(row, col, board.playerTwoColor);
+					hasWon = board.checkForWinner(board.playerTwoColor);
+					currentPlayerStatus = { std::string("Player: 1"), font, 50 };
+				}
+				if (++board.filledPlaces ==
+					(board.getNumberOfColumns() * board.getNumberOfRows())) {
+					isDraw = true;
+				}
 				event.type = sf::Event::KeyPressed;
-				continue;
+				board.currentPlayer = !board.currentPlayer;
 			}
-			int row = board.getLowestPlace(col);
-			if (board.currentPlayer) {
-				board.setColor(row, col, sf::Color::Red);
-				currentPlayerStatus = { std::string("Player: 1"), font, 50 };
-			}
-			else {
-				board.setColor(row, col, sf::Color::Blue);
-				currentPlayerStatus = { std::string("Player: 2"), font, 50 };
-			}
-			event.type = sf::Event::KeyPressed;
-			board.currentPlayer = !board.currentPlayer;
 		}
 
 		currentPlayerStatus.setOutlineThickness(2.f);
 		currentPlayerStatus.setOutlineColor(sf::Color::Black);
 		currentPlayerStatus.setPosition(100.f, 10);
 
-		window.clear(sf::Color::Cyan);
+		window.clear(sf::Color::Green);
 		window.draw(currentPlayerStatus);
+		if (hasWon) {
+			window.draw(winnerMessage);
+		}
+		if (isDraw && !hasWon) {
+			window.draw(drawMessage);
+		}
 		board.drawBoard();
 		window.display();
 	}
