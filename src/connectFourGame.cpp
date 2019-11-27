@@ -16,19 +16,40 @@ int connectFourGame() {
 
 	sf::Text currentPlayerStatus;
 	currentPlayerStatus.setCharacterSize(30.f);
+	currentPlayerStatus = { std::string("Player: 1"), font, 50 };
 
 	sf::Text winnerMessage;
 	winnerMessage.setCharacterSize(30.f);
 
 	sf::Text drawMessage;
 	drawMessage.setCharacterSize(30.f);
+	
+	sf::SoundBuffer placingSoundBuffer;
+	if (!placingSoundBuffer.loadFromFile("resrcs/placingsound.wav")) {
+		std::cout << "couldn't load placingsound.wav" << std::endl;
+	}
+	sf::Sound placingSound;
+	placingSound.setBuffer(placingSoundBuffer);
+	
+	sf::SoundBuffer winningSoundBuffer;
+	if (!winningSoundBuffer.loadFromFile("resrcs/ohyeah.wav")) {
+		std::cout << "couldn't load ohyeah.wav" << std::endl;
+	}
+	sf::Sound winningSound;
+	winningSound.setBuffer(winningSoundBuffer);
+
+	sf::SoundBuffer drawSoundBuffer;
+	if (!drawSoundBuffer.loadFromFile("resrcs/wahwah.wav")) {
+		std::cout << "couldn't load wahwah.wav" << std::endl;
+	}
+	sf::Sound drawSound;
+	drawSound.setBuffer(drawSoundBuffer);
 
 	bool hasWon = false;
 	bool isDraw = false;
 
 	while (window.isOpen())
 	{
-
 		if (hasWon || isDraw) {
 			if (board.currentPlayer) {
 				winnerMessage = { std::string("Player 2 Wins!"), font, 50 };
@@ -73,12 +94,12 @@ int connectFourGame() {
 				int row = board.getLowestPlace(col);
 				if (board.currentPlayer) {
 					board.setColor(row, col, board.playerOneColor);
-					hasWon = board.checkForWinner(board.playerOneColor);
+					hasWon = board.checkForWinner(row, col);
 					currentPlayerStatus = { std::string("Player: 2"), font, 50 };
 				}
 				else {
 					board.setColor(row, col, board.playerTwoColor);
-					hasWon = board.checkForWinner(board.playerTwoColor);
+					hasWon = board.checkForWinner(row, col);
 					currentPlayerStatus = { std::string("Player: 1"), font, 50 };
 				}
 				if (++board.filledPlaces ==
@@ -87,8 +108,13 @@ int connectFourGame() {
 				}
 				event.type = sf::Event::KeyPressed;
 				board.currentPlayer = !board.currentPlayer;
+				if (hasWon) winningSound.play();
+				if (isDraw && !hasWon) drawSound.play();
+				placingSound.play();
 			}
 		}
+
+		std::cout << sf::Mouse::getPosition(window).x << ", " << sf::Mouse::getPosition(window).y << std::endl;
 
 		currentPlayerStatus.setOutlineThickness(2.f);
 		currentPlayerStatus.setOutlineColor(sf::Color::Black);

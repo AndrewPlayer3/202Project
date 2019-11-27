@@ -42,31 +42,29 @@ bool Board::checkForWinner(int row, int col) {
 	int count = 0;
 	// Rows
 	for (int i = 0; i < _cols; i++) {
-		if (_places[row][i].getFillColor() == playerColor) count++;
-		else count = 0;
+		_places[row][i].getFillColor() == playerColor ? count++ : count = 0;
 		if (count == 4) return true;
 	}
 	count = 0;
 	// Columns
 	for (int i = 0; i < _rows; i++) {
-		if (_places[i][col].getFillColor() == playerColor) count++;
-		else count = 0;
+		_places[i][col].getFillColor() == playerColor ? count++ : count = 0;
 		if (count == 4) return true;
 	}
 	count = 0;
 	// Right Diagonals
 	for (int i = row, j = col; i > 0 && j < _cols - 1
-		&& _places[i][j].getFillColor() == playerColor; i--, j++, count++);
-	for (int i = row, j = col; i < _rows - 1 && j > 0
-		&& _places[i][j].getFillColor() == playerColor; i++, j--, count++);
+		&& _places[i][j].getFillColor() == playerColor; i--, j++) count++;
+	for (int i = row+1, j = col-1; i < _rows - 1 && j > 0
+		&& _places[i][j].getFillColor() == playerColor; i++, j--) count++;
 	if (count == 4) return true;
 	else count = 0;
 
 	// Left Diagonals
 	for (int i = row, j = col; i >= 0 && j >= 0
-		&& _places[i][j].getFillColor() == playerColor; i--, j--, count++);
-	for (int i = row, j = col; i < _rows && j < _cols 
-		&& _places[i][j].getFillColor() == playerColor; i++, j++, count++);
+		&& _places[i][j].getFillColor() == playerColor; i--, j--) count++;
+	for (int i = row+1, j = col+1; i < _rows && j < _cols 
+		&& _places[i][j].getFillColor() == playerColor; i++, j++) count++;
 	if (count == 4) return true;
 	else count = 0;
 
