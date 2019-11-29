@@ -77,5 +77,8 @@
     <Media Include="resrcs\placingsound.wav">
       <Filter>Resource Files</Filter>
     </Media>
+    <Media Include="resrcs\wahwah.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
   </ItemGroup>
 </Project>

@@ -67,6 +67,7 @@
   <ItemGroup>
     <Media Include="resrcs\ohyeah.wav" />
     <Media Include="resrcs\placingsound.wav" />
+    <Media Include="resrcs\wahwah.wav" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

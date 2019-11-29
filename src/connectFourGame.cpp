@@ -94,12 +94,12 @@ int connectFourGame() {
 				int row = board.getLowestPlace(col);
 				if (board.currentPlayer) {
 					board.setColor(row, col, board.playerOneColor);
-					hasWon = board.checkForWinner(row, col);
+					hasWon = board.checkForWinner(board.playerOneColor);
 					currentPlayerStatus = { std::string("Player: 2"), font, 50 };
 				}
 				else {
 					board.setColor(row, col, board.playerTwoColor);
-					hasWon = board.checkForWinner(row, col);
+					hasWon = board.checkForWinner(board.playerTwoColor);
 					currentPlayerStatus = { std::string("Player: 1"), font, 50 };
 				}
 				if (++board.filledPlaces ==
