@@ -38,4 +38,8 @@ Debug/
 *.log
 *.idb
 *.pdb
+<<<<<<< HEAD
 *.tlog
+=======
+*.tlog
+>>>>>>> 0d09193ff9ecaf87bfc29c70bb644f6557b05856
