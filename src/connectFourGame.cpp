@@ -45,6 +45,14 @@ int connectFourGame() {
 	sf::Sound drawSound;
 	drawSound.setBuffer(drawSoundBuffer);
 
+	sf::Music backgroundMusic;
+	if (!backgroundMusic.openFromFile("resrcs/elevator.wav")) {
+		std::cout << "couldn't load elevator.wav" << std::endl;
+	}
+	backgroundMusic.setVolume(10);
+	backgroundMusic.setLoop(true);
+	backgroundMusic.play();
+	
 	bool hasWon = false;
 	bool isDraw = false;
 
@@ -120,7 +128,8 @@ int connectFourGame() {
 		currentPlayerStatus.setOutlineColor(sf::Color::Black);
 		currentPlayerStatus.setPosition(100.f, 10);
 
-		window.clear(sf::Color::Green);
+		sf::Color boardColor(153, 51, 255);
+		window.clear(boardColor);
 		window.draw(currentPlayerStatus);
 		if (hasWon) {
 			window.draw(winnerMessage);

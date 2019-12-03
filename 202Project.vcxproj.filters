@@ -80,5 +80,8 @@
     <Media Include="resrcs\wahwah.wav">
       <Filter>Resource Files</Filter>
     </Media>
+    <Media Include="resrcs\elevator.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
   </ItemGroup>
 </Project>

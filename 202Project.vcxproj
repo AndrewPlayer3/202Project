@@ -65,6 +65,7 @@
     <ClInclude Include="src\board.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <Media Include="resrcs\elevator.wav" />
     <Media Include="resrcs\ohyeah.wav" />
     <Media Include="resrcs\placingsound.wav" />
     <Media Include="resrcs\wahwah.wav" />
