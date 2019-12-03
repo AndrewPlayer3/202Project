@@ -1,3 +1,13 @@
+/*
+	CS 202 Group Project
+	Connect4 Board Game made with SFML
+
+	Members: Robert Lawton, Andrew Player,
+	Jadon Nashoanak, Jordan Day, Jared Maltos
+
+	12/3/2019
+	Professor Hartman
+*/
 #include "board.hpp"
 #include <iostream>
 
@@ -36,6 +46,7 @@ int connectFourGame() {
 		std::cout << "couldn't load ohyeah.wav" << std::endl;
 	}
 	sf::Sound winningSound;
+	winningSound.setVolume(50);
 	winningSound.setBuffer(winningSoundBuffer);
 
 	sf::SoundBuffer drawSoundBuffer;
@@ -43,13 +54,14 @@ int connectFourGame() {
 		std::cout << "couldn't load wahwah.wav" << std::endl;
 	}
 	sf::Sound drawSound;
+	drawSound.setVolume(50);
 	drawSound.setBuffer(drawSoundBuffer);
 
 	sf::Music backgroundMusic;
 	if (!backgroundMusic.openFromFile("resrcs/elevator.wav")) {
 		std::cout << "couldn't load elevator.wav" << std::endl;
 	}
-	backgroundMusic.setVolume(10);
+	backgroundMusic.setVolume(25);
 	backgroundMusic.setLoop(true);
 	backgroundMusic.play();
 	
@@ -99,7 +111,7 @@ int connectFourGame() {
 					event.type = sf::Event::KeyPressed;
 					continue;
 				}
-				int row = board.getLowestPlace(col);
+				 int row = board.getLowestPlace(col);
 				if (board.currentPlayer) {
 					board.setColor(row, col, board.playerOneColor);
 					hasWon = board.checkForWinner(board.playerOneColor);
