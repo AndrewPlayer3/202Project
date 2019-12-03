@@ -16,7 +16,8 @@ int connectFourGame() {
 	int windowHeight = 900;
 	int windowWidth = 1100;
 
-	sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Connect4!");
+	sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "Connect4!", 
+	sf::Style::Titlebar | !sf::Style::Resize | sf::Style::Close);
 	window.setKeyRepeatEnabled(false);
 	Board board(&window);
 	board.initBoard();
@@ -68,13 +69,13 @@ int connectFourGame() {
 	bool hasWon = false;
 	bool isDraw = false;
 
+	// This is the game loop
 	while (window.isOpen())
 	{
 		if (hasWon || isDraw) {
 			if (board.currentPlayer) {
 				winnerMessage = { std::string("Player 2 Wins!"), font, 50 };
-			}
-			else {
+			} else {
 				winnerMessage = { std::string("Player 1 Wins!"), font, 50 };
 			}
 			winnerMessage.setPosition(400.f, 10.f);
@@ -111,13 +112,12 @@ int connectFourGame() {
 					event.type = sf::Event::KeyPressed;
 					continue;
 				}
-				 int row = board.getLowestPlace(col);
+				int row = board.getLowestPlace(col);
 				if (board.currentPlayer) {
 					board.setColor(row, col, board.playerOneColor);
 					hasWon = board.checkForWinner(board.playerOneColor);
 					currentPlayerStatus = { std::string("Player: 2"), font, 50 };
-				}
-				else {
+				} else {
 					board.setColor(row, col, board.playerTwoColor);
 					hasWon = board.checkForWinner(board.playerTwoColor);
 					currentPlayerStatus = { std::string("Player: 1"), font, 50 };
@@ -134,8 +134,6 @@ int connectFourGame() {
 			}
 		}
 
-		std::cout << sf::Mouse::getPosition(window).x << ", " << sf::Mouse::getPosition(window).y << std::endl;
-
 		currentPlayerStatus.setOutlineThickness(2.f);
 		currentPlayerStatus.setOutlineColor(sf::Color::Black);
 		currentPlayerStatus.setPosition(100.f, 10);
@@ -143,12 +141,10 @@ int connectFourGame() {
 		sf::Color boardColor(153, 51, 255);
 		window.clear(boardColor);
 		window.draw(currentPlayerStatus);
-		if (hasWon) {
-			window.draw(winnerMessage);
-		}
-		if (isDraw && !hasWon) {
-			window.draw(drawMessage);
-		}
+
+		if (hasWon) window.draw(winnerMessage);
+		if (isDraw && !hasWon) window.draw(drawMessage);
+		
 		board.drawBoard();
 		window.display();
 	}

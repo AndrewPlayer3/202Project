@@ -10,8 +10,7 @@
 */
 #include "board.hpp"
 
-int main()
-{
+int main(){
 	connectFourGame();
 	return 0;
 }
