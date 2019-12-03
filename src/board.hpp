@@ -19,8 +19,8 @@ public:
 
 	Board(sf::RenderWindow* window)
 		: window(window), _places(), currentPlayer(true) {
-		playerOneColor = sf::Color::Red;
-		playerTwoColor = sf::Color::Blue;
+		playerOneColor = sf::Color (255 ,51 ,51);
+		playerTwoColor = sf::Color(51, 51, 255);
 		filledPlaces = 0;
 	}
 
