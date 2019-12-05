@@ -45,42 +45,6 @@ sf::Vector2f Board::getPlacePosition(int row, int column) {
 	return _places[row][column].getPosition();
 }
 
-bool Board::checkForWinner(int row, int col) {
-	if (row >= _rows || col >= _cols) return false;
-	sf::Color playerColor = _places[row][col].getFillColor();
-	if (playerColor != playerOneColor && playerColor != playerTwoColor) return false;
-	int count = 0;
-	// Rows
-	for (int i = 0; i < _cols; i++) {
-		_places[row][i].getFillColor() == playerColor ? count++ : count = 0;
-		if (count == 4) return true;
-	}
-	count = 0;
-	// Columns
-	for (int i = 0; i < _rows; i++) {
-		_places[i][col].getFillColor() == playerColor ? count++ : count = 0;
-		if (count == 4) return true;
-	}
-	count = 0;
-	// Right Diagonals
-	for (int i = row, j = col; i > 0 && j < _cols - 1
-		&& _places[i][j].getFillColor() == playerColor; i--, j++) count++;
-	for (int i = row+1, j = col-1; i < _rows - 1 && j > 0
-		&& _places[i][j].getFillColor() == playerColor; i++, j--) count++;
-	if (count == 4) return true;
-	else count = 0;
-
-	// Left Diagonals
-	for (int i = row, j = col; i >= 0 && j >= 0
-		&& _places[i][j].getFillColor() == playerColor; i--, j--) count++;
-	for (int i = row+1, j = col+1; i < _rows && j < _cols 
-		&& _places[i][j].getFillColor() == playerColor; i++, j++) count++;
-	if (count == 4) return true;
-	else count = 0;
-
-	return false;
-}
-
 bool Board::checkForWinner(sf::Color playerColor) {
 	int count = 0;
 	// Rows

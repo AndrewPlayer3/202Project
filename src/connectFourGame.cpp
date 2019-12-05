@@ -134,8 +134,6 @@ int connectFourGame() {
 			}
 		}
 
-		std::cout << sf::Mouse::getPosition(window).x << ", " << sf::Mouse::getPosition(window).y << std::endl;
-
 		currentPlayerStatus.setOutlineThickness(2.f);
 		currentPlayerStatus.setOutlineColor(sf::Color::Black);
 		currentPlayerStatus.setPosition(100.f, 10);
