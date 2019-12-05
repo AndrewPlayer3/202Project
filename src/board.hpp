@@ -1,3 +1,13 @@
+/*
+	CS 202 Group Project
+	Connect4 Board Game made with SFML
+
+	Members: Robert Lawton, Andrew Player,
+	Jadon Nashoanak, Jordan Day, Jared Maltos
+
+	12/3/2019
+	Professor Hartman
+*/
 #ifndef _BOARD_HPP_
 #define _BOARD_HPP_
 
@@ -28,6 +38,7 @@ public:
 	int getLowestPlace(int column);
 	bool isOccupied(sf::Color playerColor, int row, int column);
 	bool checkForWinner(sf::Color playerColor);
+	bool checkForWinner(int row, int col);
 	bool checkForDraw();
 	sf::Vector2f getPlacePosition(int row, int column);
 	int getColumnFromPos(float mPos);
