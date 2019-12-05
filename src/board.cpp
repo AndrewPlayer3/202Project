@@ -1,6 +1,6 @@
 #include "board.hpp"
 
-void Board::initBoard() {
+void Board::initBoard() {											//Creates Board
 	for (int row = 0; row < _rows; row++) {
 		_places.push_back(std::vector<sf::CircleShape>(_cols));
 		for (int col = 0; col < _cols; col++) {
@@ -12,7 +12,7 @@ void Board::initBoard() {
 	}
 }
 
-int Board::getLowestPlace(int column) {
+int Board::getLowestPlace(int column) {								//Finds the lowest spot for chip to drop
 	if (column < _cols) {
 		for (int row = 0; row < _rows; row++) {
 			if (_places[row][column].getFillColor() == sf::Color::White) {
@@ -24,18 +24,18 @@ int Board::getLowestPlace(int column) {
 	}
 }
 
-bool Board::isOccupied(sf::Color playerColor, int row, int column) {
+bool Board::isOccupied(sf::Color playerColor, int row, int column) {		//Indicates whether or not spot is filled
 	if (_places[row][column].getFillColor() == playerColor) {
 		return true;
 	}
 	return false;
 }
 
-sf::Vector2f Board::getPlacePosition(int row, int column) {
+sf::Vector2f Board::getPlacePosition(int row, int column) {					//Determines positioning
 	return _places[row][column].getPosition();
 }
 
-bool Board::checkForWinner(int row, int col) {
+bool Board::checkForWinner(int row, int col) {								//Indicates whether there are four in a row
 	if (row >= _rows || col >= _cols) return false;
 	sf::Color playerColor = _places[row][col].getFillColor();
 	if (playerColor != playerOneColor && playerColor != playerTwoColor) return false;
@@ -71,7 +71,7 @@ bool Board::checkForWinner(int row, int col) {
 	return false;
 }
 
-bool Board::checkForWinner(sf::Color playerColor) {
+bool Board::checkForWinner(sf::Color playerColor) {							//Checks for four pieces in a row.
 	int count = 0;
 	// Rows
 	for (int row = 0; row < _rows; row++) {
@@ -128,7 +128,7 @@ bool Board::checkForWinner(sf::Color playerColor) {
 	return false;
 }
 
-bool Board::checkForDraw() {
+bool Board::checkForDraw() {							//If the board is entirely filled
 	int fullCount = 0;
 	for (int col = 0; col < _cols; col++) {
 		if (isColumnFull(col)) fullCount++;
@@ -137,14 +137,14 @@ bool Board::checkForDraw() {
 	return false;
 }
 
-bool Board::isColumnFull(int column) {
+bool Board::isColumnFull(int column) {								//Checks for full column
 	if (_places[0][column].getFillColor() != sf::Color::White) {
 		return true;
 	}
 	return false;
 }
 
-void Board::setColor(int row, int column, sf::Color color) {
+void Board::setColor(int row, int column, sf::Color color) {		
 	if (row < _rows && column < _cols) {
 		_places[row][column].setFillColor(color);
 	}
@@ -161,7 +161,7 @@ void Board::drawBoard() {
 	}
 }
 
-int Board::getColumnFromPos(float mPos) {
+int Board::getColumnFromPos(float mPos) {								//Tracks mouse click over column, returns column
 	int col = -1;
 	for (int i = 0; i < 7; i++) {
 		if (i == 0
